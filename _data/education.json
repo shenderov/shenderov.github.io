@@ -1,0 +1,41 @@
+{
+  "title": "Education",
+  "elements": [
+    {
+      "startDate": "2017-10-31T22:00:00.000+0000",
+      "endDate": null,
+      "noEndDate": false,
+      "positionName": "Computer Science",
+      "organisation": "University of the People",
+      "location": "California",
+      "description": null
+    },
+    {
+      "startDate": "2013-10-31T21:00:00.000+0000",
+      "endDate": "2015-10-31T21:00:00.000+0000",
+      "noEndDate": false,
+      "positionName": "Web, Java/J2EE/Android Programming",
+      "organisation": "Tel-Ran Colledge",
+      "location": "Israel",
+      "description": null
+    },
+    {
+      "startDate": "2013-10-31T21:00:00.000+0000",
+      "endDate": null,
+      "noEndDate": true,
+      "positionName": "ISTQB",
+      "organisation": "Software Testing Certification",
+      "location": null,
+      "description": null
+    },
+    {
+      "startDate": "2002-09-31T21:00:00.000+0000",
+      "endDate": "2008-05-31T21:00:00.000+0000",
+      "noEndDate": false,
+      "positionName": "Master of law (LL.m.)",
+      "organisation": "Moscow University",
+      "location": "Russia",
+      "description": null
+    }
+  ]
+}

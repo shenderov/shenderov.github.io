@@ -1,0 +1,41 @@
+<section id="{{ include.id }}" class="section about-section scrollspy">
+    <div class="container about-container">
+        <div class="row about-container-row">
+            <div class="intro z-depth-1 col m12">
+                <div class="center-align col m12 s12 l5 xl5">
+                    <div class="profile-image" >
+                        <img alt="Profile Image" src="/assets/img/{{ include.data.photo }}">
+                    </div>
+                    <h1>
+                        <span class="about-name">{{ include.data.name }}</span>
+                        <span class="about-title">{{ include.data.positionName }}</span>
+                    </h1>
+                </div>
+                <div class="col m12 s12 l7 xl7">
+                    <div class="intro-content">
+                        <div class="section-title left-align"><h2>{{ include.data.title }}</h2></div>
+                        <p>{{ include.data.description }}</p>
+                        <ul>
+                            {% for element in include.data.contacts | sort: "position" %}
+                            <li>
+                                <span class="about-info-label">{{element.label}}</span>
+                                <span class="about-info-value">{{element.value}}</span>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row about-media center">
+            {% for link in include.data.mediaLinks | sort: "position" %}
+            <span>
+                <a href="{{link.value}}" target="_blank" title="{{link.label}}">
+                    <i class="{{link.iconClass}}"></i></a>
+            </span>
+            {% endfor %}
+        </div>
+    </div>
+</section>

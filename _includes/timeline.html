@@ -1,0 +1,60 @@
+<section id="{{ include.id }}" class="section scrollspy wow fadeIn" data-wow-delay="0.2s">
+    <div class="container">
+        <div class="row">
+            <div class="section-title">
+                <h2>{{ include.data.title }}</h2>
+            </div>
+            <ul class="timeline">
+                {%- assign sorted_elements = include.data.elements | sort: 'startDate' | reverse -%} <!-- Sort by startDate and reverse for most recent first -->
+                {% for element in sorted_elements %}
+                    {% assign index_modulo = forloop.index | modulo: 2 %}
+                    {% if index_modulo == 0 %}
+                        {% assign element_class = 'timeline-inverted' %}
+                        {% assign circle_class = 'invert' %}
+                    {% else %}
+                        {% assign element_class = '' %}
+                        {% assign circle_class = '' %}
+                    {% endif %}
+                <li class="{{element_class}}">
+                    <div class="timeline-badge">
+                        <a><i class="fa fa-circle {{circle_class}}" id="exp-el{{forloop.index}}"></i></a>
+                    </div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            {% assign start_year = element.startDate | date: "%Y" %}
+                            {% if element.noEndDate == true %}
+                                {% assign date_string = start_year %}
+                            {% else %}
+                                {% if element.endDate != null %}
+                                    {% assign end_year = element.endDate | date: "%Y" %}
+                                {% else %}
+                                    {% assign end_year = "Present" %}
+                                {% endif %}
+                                {% assign date_string = start_year | append: " - " | append: end_year %}
+                            {% endif %}
+                            <h6>{{date_string}}</h6>
+                        </div>
+                        <div class="timeline-heading">
+                            <h4>{{element.positionName}}</h4>
+                        </div>
+                        <div class="timeline-heading">
+                            <h5>{{element.organisation}}</h5>
+                        </div>
+                        {% if element.location != null and element.description != '' %}
+                        <div class="timeline-heading">
+                            <h6>{{element.location}}</h6>
+                        </div>
+                        {% endif %}
+                        {% if element.description != null and element.description != '' %}
+                        <div class="timeline-body">
+                            <p>{{element.description}}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </li>
+                {% endfor %}
+                <li class="clearfix no-float"></li>
+            </ul>
+        </div>
+    </div>
+</section>

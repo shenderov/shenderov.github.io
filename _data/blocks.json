@@ -1,0 +1,51 @@
+{
+  "about": {
+    "id": "about",
+    "position": 1,
+    "menuTitle": "About Me",
+    "template": "about.html",
+    "dataFile": "site.data.about"
+  },
+  "expertise": {
+    "id": "expertise",
+    "position": 2,
+    "menuTitle": "Expertise",
+    "template": "expertise.html",
+    "dataFile": "site.data.expertise"
+  },
+  "skills": {
+    "id": "skills",
+    "position": 3,
+    "menuTitle": "Skills",
+    "template": "skills.html",
+    "dataFile": "site.data.skills"
+  },
+  "languages": {
+    "id": "languages",
+    "position": 6,
+    "menuTitle": "Language Skills",
+    "template": "skills.html",
+    "dataFile": "site.data.languages"
+  },
+  "experience": {
+    "id": "experience",
+    "position": 4,
+    "menuTitle": "Work Experience",
+    "template": "timeline.html",
+    "dataFile": "site.data.experince"
+  },
+  "education": {
+    "id": "education",
+    "position": 5,
+    "menuTitle": "Education",
+    "template": "timeline.html",
+    "dataFile": "site.data.education"
+  },
+  "contact": {
+    "id": "contact",
+    "position": 7,
+    "menuTitle": "Contact",
+    "template": "contact.html",
+    "dataFile": "site.data.contact"
+  }
+}

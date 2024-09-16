@@ -1,0 +1,24 @@
+{
+  "title": "Languages",
+  "position": 4,
+  "skills": [
+    {
+      "position": 1,
+      "iconClass": null,
+      "label": "English",
+      "value": 85
+    },
+    {
+      "position": 2,
+      "iconClass": null,
+      "label": "Russian",
+      "value": 100
+    },
+    {
+      "position": 3,
+      "iconClass": null,
+      "label": "Hebrew",
+      "value": 80
+    }
+  ]
+}

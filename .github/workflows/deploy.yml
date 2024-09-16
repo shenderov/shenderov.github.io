@@ -1,0 +1,120 @@
+name: Deploy to GitHub Pages
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+  workflow_dispatch:
+    inputs:
+      version_override:
+        description: 'Override version'
+        required: true
+      branch:
+        description: 'Branch to deploy from'
+        default: 'main'
+        required: true
+
+jobs:
+  deploy:
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.inputs.branch || 'main' }}
+
+      # Set up Ruby for Jekyll
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
+
+      # Install dependencies
+      - name: Install dependencies
+        run: bundle install
+
+      # Get the current version from version.json
+      - name: Get current version
+        id: current_version
+        run: |
+          if [ -f _data/version.json ]; then
+            cat _data/version.json | jq -r '.version' > current_version.txt
+          else
+            echo "0.0.0" > current_version.txt
+          fi
+          echo "::set-output name=version::$(cat current_version.txt)"
+
+      # Determine the new version
+      - name: Determine new version
+        id: semver
+        run: |
+          branch_name=${{ github.head_ref || github.event.inputs.branch }}
+          current_version=$(cat current_version.txt)
+
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            new_version="${{ github.event.inputs.version_override }}"
+          else
+            major=$(echo $current_version | cut -d. -f1)
+            minor=$(echo $current_version | cut -d. -f2)
+            patch=$(echo $current_version | cut -d. -f3)
+
+            if [[ "$branch_name" == major/* || "$branch_name" == version/* ]]; then
+              major=$((major + 1))
+              minor=0
+              patch=0
+            elif [[ "$branch_name" == feature/* || "$branch_name" == minor/* ]]; then
+              minor=$((minor + 1))
+              patch=0
+            elif [[ "$branch_name" == update/* || "$branch_name" == fix/* ]]; then
+              patch=$((patch + 1))
+            fi
+
+            new_version="$major.$minor.$patch"
+          fi
+
+          echo "New version: $new_version"
+          echo "::set-output name=version::$new_version"
+
+      # Update version.json with new version, build, and timestamp
+      - name: Update version.json
+        run: |
+          build_number=$GITHUB_RUN_NUMBER
+          timestamp=$(date +%Y%m%d)
+
+          jq -n --arg version "$new_version" --arg build "$build_number" --arg timestamp "$timestamp" \
+            '{version: $version, build: $build, timestamp: $timestamp}' > _data/version.json
+
+      # Commit the updated version.json file
+      - name: Commit version changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add _data/version.json
+          git commit -m "Bump version to ${{ steps.semver.outputs.version }} [skip ci]"
+          git push origin main
+
+      # Create a Git tag for the new version
+      - name: Create and push Git tag
+        run: |
+          git tag "v${{ steps.semver.outputs.version }}"
+          git push origin "v${{ steps.semver.outputs.version }}"
+
+      # Build the Jekyll site with minification enabled in production
+      - name: Build the Jekyll site
+        env:
+          JEKYLL_ENV: production
+        run: bundle exec jekyll build --destination ./_site
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site

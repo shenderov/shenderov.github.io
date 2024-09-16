@@ -1,0 +1,29 @@
+<header>
+    <div class="navbar-container" id="home">
+        <div id="sticky-nav">
+            <div id="nav-container">
+                <div class="row">
+                    <nav class="nav-wrap" id="navbar">
+                        <ul class="hide-on-med-and-down group">
+                            <li><a href="#home">Home</a></li>
+                            {% for block in site.data.blocks %}
+                            {% assign block_data = block[1] %}
+                            <li><a href="#{{ block_data.id }}">{{ block_data.menuTitle }}</a></li>
+                            {% endfor %}
+                        </ul>
+                        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    </nav>
+                    
+                    <ul id="slide-out" class="sidenav">
+                        
+                        <li><a href="#home" class="sidenav-close">Home</a></li>
+                        {% for block in site.data.blocks %}
+                        {% assign block_data = block[1] %}
+                        <li><a href="#{{ block_data.id }}" class="sidenav-close">{{ block_data.menuTitle }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

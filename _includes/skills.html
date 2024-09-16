@@ -1,0 +1,28 @@
+<section id="{{ include.id }}" class="section skills-section scrollspy wow fadeIn" data-wow-delay="0.2s">
+    <div class="container">
+        <div class="row">
+            <div class="skills-preloader z-depth-1">
+                <div class="section-title">
+                    <h2>{{ include.data.title}}</h2>
+                </div>
+                {% assign total_items = include.data.skills.size %}
+                {% assign items_per_column = total_items | divided_by: include.columns | ceil %}
+                <div class="row">
+                  {% for column in (1..include.columns) %}
+                    <div class="col m{{ 12 | divided_by: include.columns }} s12">
+                      {% assign start_index = items_per_column | times: column | minus: items_per_column %}
+                      {% assign end_index = items_per_column | times: column %}
+                      {% assign skill_chunk = include.data.skills | slice: start_index, items_per_column %}
+                      {% for skill in skill_chunk %}
+                          <span>{{ skill.label }}</span>
+                          <div class="progress">
+                            <div class="determinate" style="width: {{ skill.value }}%;"></div>
+                          </div>
+                      {% endfor %}
+                    </div>
+                  {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

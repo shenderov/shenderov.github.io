@@ -1,0 +1,41 @@
+{
+    "title": "About Me",
+    "name": "Konstantin Shenderov",
+    "positionName": "Test Automation Engineer and Full Stack Developer",
+    "photo": "personal_photo.jpg",
+    "description": "Hello, I am Konstantin Shenderov, an ISTQB Certified Test Automation Engineer and Full Stack Developer from Winnipeg, Canada. The seven years of experience in software, hardware, and firmware testing, combined with a strong background in full stack web development, has enabled me to develop and create unique test automation solutions using a wide range of tools. My expertise ranges from software testing and QA automation to full stack, back-end, and front-end development.",
+    "contacts": [
+      {
+        "position": 1,
+        "iconClass": null,
+        "label": "Location",
+        "value": "Winnipeg, Canada"
+      }
+    ],
+    "mediaLinks": [
+      {
+        "position": 1,
+        "iconClass": "fa-brands fa-linkedin",
+        "value": "https://www.linkedin.com/in/shenderov",
+        "label": "LinkedIn"
+      },
+      {
+        "position": 2,
+        "iconClass": "fa-brands fa-square-x-twitter",
+        "value": "https://x.com/KShenderov",
+        "label": "X"
+      },
+      {
+        "position": 3,
+        "iconClass": "fa-brands fa-square-facebook",
+        "value": "https://www.facebook.com/konstantin.shenderov",
+        "label": "Facebook"
+      },
+      {
+        "position": 4,
+        "iconClass": "fa-brands fa-telegram",
+        "value": "https://t.me/shenderov_k",
+        "label": "Telegram"
+      }
+    ]
+  }

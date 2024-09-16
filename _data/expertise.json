@@ -1,0 +1,41 @@
+{
+  "title": "Expertise",
+  "blocks": [
+    {
+      "position": 1,
+      "iconClass": "fa fa-bug",
+      "label": "Software Testing",
+      "value": "With over seven years of experience as a software, hardware, and firmware test engineer, I have the capability, methodology, and documentation to plan, develop, and execute on a wide range of test practices using today's most popular tools and approaches."
+    },
+    {
+      "position": 2,
+      "iconClass": "fab fa-whmcs",
+      "label": "QA Automation",
+      "value": "Whether you need test automation solutions for Web UI and REST API done through Selenium Web Driver, TestNG, JUnit, Geb, Spock Framework, BrowserStack, and SoapUI, or automated configuration scripting done through Java, Groovy, or Bash, my developed test automation solutions can get the job done. Beyond developing and maintaining complex testing environments and frameworks for automated tests using open-source continuous integration software tools such as Jenkins, Docker, and VMs, I can also generate and load data for performance and load testing purposes."
+    },
+    {
+      "position": 3,
+      "iconClass": "fas fa-infinity",
+      "label": "DevOps",
+      "value": "Regardless of what operating system is in use (Linux, MacOS, or Windows), I can configure, test and production environments such as web and application servers, load balancers, databases, NAS, proxy networks, and CI/CD tools. Beyond this, my experience extends to virtualisation and the cloud, via Amazon Web Services, Google Cloud Platform, VMware, and Virtual Box, as well as, containerization with Docker."
+    },
+    {
+      "position": 4,
+      "iconClass": "fa fa-code",
+      "label": "Full-Stack Development",
+      "value": "In using modern frameworks and technologies like Java, Spring Boot, Hibernate, HTML5, CSS3, and AngularJS, I am able to take a web application from its inception as an idea, all the way to production."
+    },
+    {
+      "position": 5,
+      "iconClass": "fa fa-server",
+      "label": "Back-End Development",
+      "value": "With a strong knowledge background in Core Java, Spring Framework, Spring Boot, Hibernate, and JDBC, I am able to develop back-end applications, create REST APIs, as well as store, fetch, and process data using SQL and NoSQL databases. All done with clean code and good unit test coverage."
+    },
+    {
+      "position": 6,
+      "iconClass": "fab fa-chrome",
+      "label": "Front-End Development",
+      "value": "In using a wide range of modern frameworks and technologies for front-end application development such as HTML5, CSS3, JavaScript, AngularJS, and jQuery, I can create applications that have responsive design on all browsers and platforms."
+    }
+  ]
+}
