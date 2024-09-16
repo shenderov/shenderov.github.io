@@ -17,30 +17,35 @@ on:
         default: 'main'
         required: true
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  deploy:
-    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
+  # Step 1: Build and determine version
+  build_and_version:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
       - name: Checkout the repository
         uses: actions/checkout@v2
         with:
           ref: ${{ github.event.inputs.branch || 'main' }}
 
-      # Set up Ruby for Jekyll
-      - name: Set up Ruby
+      - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0'
+          ruby-version: '3.3.5'
           bundler-cache: true
 
-      # Install dependencies
       - name: Install dependencies
         run: bundle install
 
-      # Get the current version from version.json
       - name: Get current version
         id: current_version
         run: |
@@ -51,7 +56,6 @@ jobs:
           fi
           echo "::set-output name=version::$(cat current_version.txt)"
 
-      # Determine the new version
       - name: Determine new version
         id: semver
         run: |
@@ -82,7 +86,6 @@ jobs:
           echo "New version: $new_version"
           echo "::set-output name=version::$new_version"
 
-      # Update version.json with new version, build, and timestamp
       - name: Update version.json
         run: |
           build_number=$GITHUB_RUN_NUMBER
@@ -91,7 +94,6 @@ jobs:
           jq -n --arg version "$new_version" --arg build "$build_number" --arg timestamp "$timestamp" \
             '{version: $version, build: $build, timestamp: $timestamp}' > _data/version.json
 
-      # Commit the updated version.json file
       - name: Commit version changes
         run: |
           git config --local user.email "action@github.com"
@@ -100,21 +102,26 @@ jobs:
           git commit -m "Bump version to ${{ steps.semver.outputs.version }} [skip ci]"
           git push origin main
 
-      # Create a Git tag for the new version
       - name: Create and push Git tag
         run: |
           git tag "v${{ steps.semver.outputs.version }}"
           git push origin "v${{ steps.semver.outputs.version }}"
 
-      # Build the Jekyll site with minification enabled in production
       - name: Build the Jekyll site
         env:
           JEKYLL_ENV: production
         run: bundle exec jekyll build --destination ./_site
 
-      # Deploy to GitHub Pages
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
+          path: ./_site
+
+  # Step 2: Deployment to GitHub Pages
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build_and_version
+
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
