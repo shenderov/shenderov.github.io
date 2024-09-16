@@ -1,0 +1,28 @@
+@import "color-scheme";
+@import "responsive";
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: $font-stack;
+  background: $background-color url("../img/backgrounds/background1.jpg") no-repeat top center;
+  background-size: 100%;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+}
+.error-toast {
+  background: $error-color
+}
+.success-toast {
+  background: $secondary-color
+}
+  
+@media #{$medium-and-down} {
+  body {
+    background: $background-color url("../img/backgrounds/background_mobile1.jpg") no-repeat top center;
+  }
+};

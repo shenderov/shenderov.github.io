@@ -1,0 +1,287 @@
+{
+  "title": "Konstantin Shenderov - Test Automation & Full Stack Developer",
+  "metaData": [
+    [
+      {
+      "attributeName": "charset", 
+      "attributeValue": "utf-8"
+    }
+    ],
+    [
+      {
+      "attributeName": "http-equiv", 
+      "attributeValue": "X-UA-Compatible"
+    },
+    {
+      "attributeName": "content", 
+      "attributeValue": "IE=edge"
+      }
+    ],
+    [
+      {
+      "attributeName": "name", 
+      "attributeValue": "viewport"
+    },
+    {
+      "attributeName": "content", 
+      "attributeValue": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+      }
+    ],
+      [
+        {
+        "attributeName": "name", 
+        "attributeValue": "description"
+      },
+      {
+        "attributeName": "content", 
+        "attributeValue": "Test Automation Engineer and Full Stack Developer with over 12 years of experience in software testing, QA automation, and web development solutions."
+        }
+      ],
+      [
+        {
+        "attributeName": "name", 
+        "attributeValue": "keywords"
+      },
+      {
+        "attributeName": "content", 
+        "attributeValue": "test automation, qa automation, full stack developer, devops, selenium, spring, playwright, typescript, javascript, web development"
+        }
+      ],
+      [
+        {
+        "attributeName": "name", 
+        "attributeValue": "author"
+      },
+      {
+        "attributeName": "content", 
+        "attributeValue": "Konstantin Shenderov"
+        }
+      ],
+      [
+        {
+        "attributeName": "name", 
+        "attributeValue": "robots"
+      },
+      {
+        "attributeName": "content", 
+        "attributeValue": "index, follow"
+        }
+      ],
+      [
+        {
+        "attributeName": "property", 
+        "attributeValue": "og:title"
+      },
+      {
+        "attributeName": "content", 
+        "attributeValue": "Konstantin Shenderov - Test Automation & Full Stack Developer"
+        }
+      ],
+      [
+        {
+        "attributeName": "property", 
+        "attributeValue": "og:description"
+      },
+      {
+        "attributeName": "content", 
+        "attributeValue": "Konstantin Shenderov is a Test Automation Engineer and Full Stack Developer with over 12 years of experience in software testing, QA automation, and web development."
+        }
+      ],
+      [
+        {
+        "attributeName": "property", 
+        "attributeValue": "og:type"
+      },
+      {
+        "attributeName": "content", 
+        "attributeValue": "website"
+        }
+      ],
+      [
+        {
+        "attributeName": "property", 
+        "attributeValue": "og:url"
+      },
+      {
+        "attributeName": "content", 
+        "attributeValue": "https://shenderov.me"
+        }
+      ],
+      [
+        {
+        "attributeName": "property", 
+        "attributeValue": "og:image"
+      },
+      {
+        "attributeName": "content", 
+        "attributeValue": "ttps://shenderov.me/assets/img/og-image.jpg"
+        }
+      ],
+      [
+        {
+        "attributeName": "property", 
+        "attributeValue": "og:locale"
+      },
+      {
+        "attributeName": "content", 
+        "attributeValue": "en_US"
+        }
+      ],
+      [
+        {
+        "attributeName": "name", 
+        "attributeValue": "twitter:card"
+      },
+      {
+        "attributeName": "content", 
+        "attributeValue": "summary_large_image"
+        }
+      ],
+      [
+        {
+        "attributeName": "name", 
+        "attributeValue": "twitter:title"
+      },
+      {
+        "attributeName": "content", 
+        "attributeValue": "Konstantin Shenderov - Test Automation & Full Stack Developer"
+        }
+      ],
+      [
+        {
+        "attributeName": "name", 
+        "attributeValue": "twitter:description"
+      },
+      {
+        "attributeName": "content", 
+        "attributeValue": "Konstantin Shenderov is a Test Automation Engineer and Full Stack Developer with over 12 years of experience in software testing, QA automation, and web development."
+        }
+      ],
+      [
+        {
+        "attributeName": "name", 
+        "attributeValue": "twitter:image"
+      },
+      {
+        "attributeName": "content", 
+        "attributeValue": "https://shenderov.me/assets/img/og-image.jpg"
+        }
+      ],
+      [
+        {
+        "attributeName": "name", 
+        "attributeValue": "twitter:site"
+      },
+      {
+        "attributeName": "content", 
+        "attributeValue": "@KShenderov"
+        }
+      ],
+      [
+        {
+        "attributeName": "name", 
+        "attributeValue": "msapplication-TileColor"
+      },
+      {
+        "attributeName": "content", 
+        "attributeValue": "#ffffff"
+        }
+      ],
+      [
+        {
+        "attributeName": "name", 
+        "attributeValue": "msapplication-TileImage"
+      },
+      {
+        "attributeName": "content", 
+        "attributeValue": "/assets/img/icons/ms-icon-144x144.png"
+        }
+      ],
+      [
+        {
+        "attributeName": "name", 
+        "attributeValue": "theme-color"
+      },
+      {
+        "attributeName": "content", 
+        "attributeValue": "#ffffff"
+        }
+      ]
+    ],
+    "links": [
+      [
+        {
+        "attributeName": "rel", 
+        "attributeValue": "canonical"
+      },
+      {
+        "attributeName": "href", 
+        "attributeValue": "https://shenderov.me"
+        }
+      ],
+      [
+        {
+        "attributeName": "rel", 
+        "attributeValue": "manifest"
+      },
+      {
+        "attributeName": "href", 
+        "attributeValue": "/assets/img/icons/manifest.json"
+        }
+      ],
+      [
+        {
+        "attributeName": "rel", 
+        "attributeValue": "apple-touch-icon"
+      },
+      {
+        "attributeName": "href", 
+        "attributeValue": "/assets/img/icons/apple-touch-icon.png"
+        }
+      ],
+      [
+        {
+        "attributeName": "rel", 
+        "attributeValue": "icon"
+      },
+      {
+        "attributeName": "href", 
+        "attributeValue": "/assets/img/icons/favicon-32x32.png"
+        },
+        {
+          "attributeName": "sizes", 
+          "attributeValue": "32x32"
+          }
+      ],
+      [
+        {
+        "attributeName": "rel", 
+        "attributeValue": "icon"
+      },
+      {
+        "attributeName": "href", 
+        "attributeValue": "/assets/img/icons/favicon-16x16.png"
+        },
+        {
+          "attributeName": "sizes", 
+          "attributeValue": "16x16"
+          }
+      ],
+      [
+        {
+        "attributeName": "rel", 
+        "attributeValue": "icon"
+      },
+      {
+        "attributeName": "href", 
+        "attributeValue": "/assets/img/icons/favicon.ico"
+        },
+        {
+          "attributeName": "type", 
+          "attributeValue": "image/x-icon"
+          }
+      ]
+    ],
+  "footerCopyright": "© 2019 Konstantin Shenderov. All Rights Reserved.",
+  "projectStartYear": "2019"
+}

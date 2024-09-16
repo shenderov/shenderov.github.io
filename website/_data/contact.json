@@ -1,0 +1,26 @@
+{
+  "title": "Contact Form",
+  "reCaptchaKey": "6LctWpMUAAAAAJaEEtevRDBQ5oBsEgFcH69Qnj0L",
+  "formLabels": {
+    "name": {
+      "iconClass": "account_circle",
+      "value": "Name"
+    },
+    "email": {
+      "iconClass": "email",
+      "value": "Email"
+    },
+    "phone": {
+      "iconClass": "phone",
+      "value": "Phone"
+    },
+    "message": {
+      "iconClass": "mode_edit",
+      "value": "Message"
+    },
+    "submit_button": {
+      "iconClass": null,
+      "value": "Send Message"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<section id="{{ include.id }}" class="section expertise-section scrollspy wow fadeIn" data-wow-delay="0.2s">
+    <div class="container">
+        <div class="row">
+            <div class="expertise-block z-depth-1">
+                <div class="section-title">
+                    <h2>{{ include.data.title }}</h2>
+                </div>
+                <div class="row">
+                {% for block in include.data.blocks sort: "position" %}
+                    {% assign index_modulo = forloop.index | modulo: 3 %}
+                    <div class="col m4 s12">
+                        <div class="center-align">
+                            <i class="{{block.iconClass}}"></i>
+                        </div>
+                        <h5>{{block.label}}</h5>
+                        <p>{{block.value}}</p>
+                    </div>
+                    {% if index_modulo == 0 and forloop.last == false %}
+                        </div>
+                        <div class="row">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        </div>
+    </div>
+</section>

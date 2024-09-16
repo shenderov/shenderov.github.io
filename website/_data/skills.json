@@ -1,0 +1,89 @@
+{
+  "title": "Skills",
+  "skills": [
+    {
+      "position": 1,
+      "iconClass": null,
+      "label": "Java",
+      "value": 94
+    },
+    {
+      "position": 2,
+      "iconClass": null,
+      "label": "Spring Framework",
+      "value": 90
+    },
+    {
+      "position": 3,
+      "iconClass": null,
+      "label": "Selenium Web Driver",
+      "value": 95
+    },
+    {
+      "position": 4,
+      "iconClass": null,
+      "label": "Groovy",
+      "value": 80
+    },
+    {
+      "position": 5,
+      "iconClass": null,
+      "label": "CI/CD Tools",
+      "value": 82
+    },
+    {
+      "position": 6,
+      "iconClass": null,
+      "label": "Databases",
+      "value": 80
+    },
+    {
+      "position": 7,
+      "iconClass": null,
+      "label": "Clouding and virtualization",
+      "value": 70
+    },
+    {
+      "position": 8,
+      "iconClass": null,
+      "label": "Software Testing Methodologies",
+      "value": 97
+    },
+    {
+      "position": 9,
+      "iconClass": null,
+      "label": "JUnit, TestNG, Spock",
+      "value": 95
+    },
+    {
+      "position": 10,
+      "iconClass": null,
+      "label": "SoapUI",
+      "value": 90
+    },
+    {
+      "position": 11,
+      "iconClass": null,
+      "label": "Bash Scripting",
+      "value": 70
+    },
+    {
+      "position": 12,
+      "iconClass": null,
+      "label": "JavaScript / AngularJS",
+      "value": 75
+    },
+    {
+      "position": 13,
+      "iconClass": null,
+      "label": "HTML5 / CSS3",
+      "value": 76
+    },
+    {
+      "position": 14,
+      "iconClass": null,
+      "label": "Spring Boot",
+      "value": 80
+    }
+  ]
+}

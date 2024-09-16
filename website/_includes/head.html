@@ -1,0 +1,47 @@
+<head>
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="8934747d-6380-465f-846c-ae46448ee1b9" data-blockingmode="auto" type="text/javascript"></script>
+  <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R59G00Y574"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-R59G00Y574');
+    </script>
+    {% for meta in site.data.seo.metaData %}
+    <meta 
+    {% for attribute in meta %}
+      {{ attribute.attributeName }}="{{ attribute.attributeValue }}"
+    {% endfor %}
+    />
+  {% endfor %}
+  {% for link in site.data.seo.links %}
+  <link 
+  {% for attribute in link %}
+    {{ attribute.attributeName }}="{{ attribute.attributeValue }}"
+  {% endfor %}
+  />
+    {% endfor %}
+
+    <link href="https://fonts.googleapis.com/css2?family=KoHo&family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="preload" as="style" onload="this.rel='stylesheet'">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.6.0/css/all.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" as="style" onload="this.rel='stylesheet'"/>
+    {% if site.data.contact.reCaptchaKey != "" and site.data.contact.reCaptchaKey != nil %}
+      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    {% endif %}
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "o3ykkxx81e");
+    </script>
+    <script type="application/ld+json">
+        {{ site.data.schema | jsonify }}
+        </script>
+    <title>{{ site.data.seo.title }}</title> 
+</head>

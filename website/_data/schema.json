@@ -1,0 +1,33 @@
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Konstantin Shenderov",
+    "jobTitle": "Test Automation & Full Stack Developer",
+    "image": "https://shenderov.me/assets/img/personal_photo.jpg",
+    "url": "https://shenderov.me/",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Winnipeg",
+      "addressRegion": "MB",
+      "addressCountry": "Canada"
+    },
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "University of the Peope"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/shenderov",
+      "https://x.com/KShenderov"
+    ],
+    "knowsAbout": [
+      "Test Automation",
+      "QA",
+      "DevOps",
+      "Full Stack Development"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "StackAdapt"
+    },
+    "description": "With over 12 years of experience in software testing, QA automation, and full stack web development, Konstantin Shenderov provides robust solutions for automation and development."
+  }

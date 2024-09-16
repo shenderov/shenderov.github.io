@@ -1,0 +1,59 @@
+{
+  "title": "Work Experience",
+  "elements": [
+    {
+      "startDate": "2023-03-07T05:00:00.000+00:00",
+      "endDate": null,
+      "noEndDate": false,
+      "positionName": "Senior QA Automation Developer",
+      "organisation": "StackAdapt",
+      "location": "Toronto, Canada. Remote",
+      "description": ""
+    },
+    {
+      "startDate": "2021-03-15T05:00:00.000+00:00",
+      "endDate": "2023-02-15T05:00:00.000+00:00",
+      "noEndDate": false,
+      "positionName": "Software Development Engineer in Test (SDET)",
+      "organisation": "Postman",
+      "location": "Remote",
+      "description": "Contributed to the company’s test framework adding new features and performing routine maintenance. Ensured stability, reliability, and performance of test execution. Created and maintained tests. Engaged developers to contribute to the testing effort. Lead several initiatives and researches to introduce test framework features requested by engineering teams"
+    },
+    {
+      "startDate": "2020-01-29T21:00:00.000+0000",
+      "endDate": "2021-01-15T05:00:00.000+00:00",
+      "noEndDate": false,
+      "positionName": "QA Automation Engineer",
+      "organisation": "Farmers Edge",
+      "location": "Winnipeg, Canada",
+      "description": "Close work with QA Manager and the product team to create a testing strategy. Determination of the company’s test automation needs, evaluating and selecting test automation tools and libraries. Test automation framework architecture and development from scratch according to determined testing strategy. Close cooperation with developers and DevOps team for test automation project integration into the company’s CI/CD environment. Maintaining a repository of created test scripts and tools."
+    },
+    {
+      "startDate": "2017-10-30T21:00:00.000+0000",
+      "endDate": "2019-11-14T21:00:00.000+0000",
+      "noEndDate": false,
+      "positionName": "QA Automation Engineer",
+      "organisation": "JFrog",
+      "location": "Netanya, Israel",
+      "description": "As part of the Artifactory team, I have been responsible for the quality and performance of the product, as well as, creating and generating suggestions for enhanced customer experience. My duties include developing and implementing automated test practices using a wide range of tools (Groovy, Geb, and Spock) that focus on improving efficiency."
+    },
+    {
+      "startDate": "2012-03-30T21:00:00.000+0000",
+      "endDate": "2015-03-30T21:00:00.000+0000",
+      "noEndDate": false,
+      "positionName": "QC/QA Engineer",
+      "organisation": "Avid (former Orad Hi-Tech)",
+      "location": "Kfar Saba, Israel",
+      "description": "In my role as a QC Engineer, I performed integration testing, troubleshooting, and quality control of real-time 3D graphics and video systems for world-leading broadcasters while in close cooperation with the research and development department. In my role as a QA engineer at Orad, I tested new versions of software, firmware, and hardware as well as maintained the records and database of systems tested in a central company repository."
+    },
+    {
+      "startDate": "2015-04-30T21:00:00.000+0000",
+      "endDate": "2017-09-30T21:00:00.000+0000",
+      "noEndDate": false,
+      "positionName": "QA Automation Engineer",
+      "organisation": "Viaccess-Orca",
+      "location": "Raanana, Israel",
+      "description": "As part of the Viaccess-Orca team, my responsibilities included developing and implementing automated test practices for both web applications and back-end API using, primarily, Selenium Web Driver and SoapUI. In addition to this, my job was to design and create automated configuration scripts and tools using the programming languages of Java and Groovy. Beyond this, I developed and implemented data loading and generation solutions using load and performance testing technologies. I also worked hand-in-hand with QA managers and colleagues to define processes and strategies associated with automation and participated in product design reviews in order to provide input on functional requirements, product designs, schedules, and potential problems. Finally, my role also included researching and testing new test tools, practices, and technologies in order to improve testing processes and decrease test time."
+    }
+  ]
+}
