@@ -2,7 +2,6 @@ source "https://rubygems.org"
 
 # Use the latest version of Jekyll
 gem "jekyll", "~> 4.3.3"
-gem 'uglifier', '>= 4.1.20'
 gem 'ostruct'
 gem 'logger'
 gem 'csv'
@@ -10,10 +9,7 @@ gem 'base64'
 
 # Plugins
 group :jekyll_plugins do
-  gem "jekyll-sitemap" # Generates sitemap.xml for SEO
-  gem "jekyll-minifier" # Minifies HTML, CSS, and JS
-  gem "jekyll-feed" # Generates RSS feed
-  gem 'jekyll-assets'
+  gem 'jekyll-assets' 
 end
 
 # Windows and JRuby dependencies (if needed)
