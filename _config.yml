@@ -14,17 +14,22 @@ sass:
   sass_dir: _sass
 
 minify_html:
-  enable: false
+  enable: true
+
+uglifier:
+  harmony: true
 
 assets:
-  external:
-    uglifier:
-      harmony: true
+  compress:
+    css: true
+    js: true
+    extensions: ['.css', '.js']
+  autoprefixer: true
 
 environments:
   production:
     minify_html:
-      enable: false
+      enable: true
 
 # Plugins
 plugins:
