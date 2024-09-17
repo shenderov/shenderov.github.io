@@ -5,16 +5,12 @@ on:
     branches:
       - main
     types:
-      - closed
-
+      - opened
+      - synchronize
   workflow_dispatch:
     inputs:
       version_override:
         description: 'Override version'
-        required: true
-      branch:
-        description: 'Branch to deploy from'
-        default: 'main'
         required: true
 
 permissions:
@@ -27,17 +23,15 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Step 1: Build and determine version
   build_and_version:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.inputs.branch || 'main' }}
 
-      - name: Setup Ruby
+      # Set up Ruby for Jekyll
+      - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3.5'
@@ -46,29 +40,35 @@ jobs:
       - name: Install dependencies
         run: bundle install
 
-      - name: Get current version
-        id: current_version
+      # Load current version and branch from version.json
+      - name: Load current version and branch
+        id: load_version
         run: |
           if [ -f _data/version.json ]; then
-            cat _data/version.json | jq -r '.version' > current_version.txt
+            branch=$(cat _data/version.json | jq -r '.branch')
+            version=$(cat _data/version.json | jq -r '.version')
           else
-            echo "0.0.0" > current_version.txt
+            branch=""
+            version="0.0.0"
           fi
-          echo "::set-output name=version::$(cat current_version.txt)"
+          echo "::set-output name=current_branch::$branch"
+          echo "::set-output name=current_version::$version"
 
-      - name: Determine new version
-        id: semver
+      # Determine version (bump if needed, or use provided version)
+      - name: Determine Version
+        id: determine_version
         run: |
-          branch_name=${{ github.head_ref || github.event.inputs.branch }}
-          current_version=$(cat current_version.txt)
-
-          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             new_version="${{ github.event.inputs.version_override }}"
+            echo "Using provided version: $new_version"
           else
+            branch_name=${{ github.head_ref }}
+            current_version="${{ steps.load_version.outputs.current_version }}"
             major=$(echo $current_version | cut -d. -f1)
             minor=$(echo $current_version | cut -d. -f2)
             patch=$(echo $current_version | cut -d. -f3)
 
+            # Logic for version bump
             if [[ "$branch_name" == major/* || "$branch_name" == version/* ]]; then
               major=$((major + 1))
               minor=0
@@ -81,32 +81,31 @@ jobs:
             fi
 
             new_version="$major.$minor.$patch"
+            echo "Bumped version: $new_version"
           fi
+          echo "::set-output name=new_version::$new_version"
 
-          echo "New version: $new_version"
-          echo "::set-output name=version::$new_version"
-
+      # Update version.json with the new version and the current branch
       - name: Update version.json
         run: |
           build_number=$GITHUB_RUN_NUMBER
           timestamp=$(date +%Y%m%d)
+          branch_name=${{ github.head_ref }}
 
-          jq -n --arg version "$new_version" --arg build "$build_number" --arg timestamp "$timestamp" \
-            '{version: $version, build: $build, timestamp: $timestamp}' > _data/version.json
+          jq -n --arg version "${{ steps.determine_version.outputs.new_version }}" --arg build "$build_number" --arg timestamp "$timestamp" --arg branch "$branch_name" \
+            '{version: $version, build: $build, timestamp: $timestamp, branch: $branch}' > _data/version.json
 
+      # Commit the updated version.json file
       - name: Commit version changes
+        if: github.event_name != 'workflow_dispatch' || github.head_ref != 'main'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add _data/version.json
-          git commit -m "Bump version to ${{ steps.semver.outputs.version }} [skip ci]"
-          git push origin main
+          git commit -m "Update version to ${{ steps.determine_version.outputs.new_version }} [skip ci]"
+          git push origin ${{ github.head_ref }}
 
-      - name: Create and push Git tag
-        run: |
-          git tag "v${{ steps.semver.outputs.version }}"
-          git push origin "v${{ steps.semver.outputs.version }}"
-
+      # Build the Jekyll site
       - name: Build the Jekyll site
         env:
           JEKYLL_ENV: production
@@ -117,7 +116,6 @@ jobs:
         with:
           path: ./_site
 
-  # Step 2: Deployment to GitHub Pages
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_version
@@ -125,3 +123,24 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+
+      # If the entire workflow succeeded, update version.json with build and timestamp, and create a tag
+      - name: Update version.json with build and timestamp after success
+        if: github.head_ref == 'main'
+        run: |
+          build_number=$GITHUB_RUN_NUMBER
+          timestamp=$(date +%Y%m%d)
+          current_version=$(cat _data/version.json | jq -r '.version')
+
+          jq '.build = $build | .timestamp = $timestamp' --arg build "$build_number" --arg timestamp "$timestamp" _data/version.json > _data/version.json
+
+          git add _data/version.json
+          git commit -m "Update build number and timestamp"
+          git push origin main
+
+      - name: Create and push Git tag
+        if: github.head_ref == 'main'
+        run: |
+          current_version=$(cat _data/version.json | jq -r '.version')
+          git tag "v$current_version"
+          git push origin "v$current_version"
