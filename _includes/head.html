@@ -9,20 +9,10 @@
 
       gtag('config', 'G-R59G00Y574');
     </script>
-    {% for meta in site.data.seo.metaData %}
-    <meta 
-    {% for attribute in meta %}
-      {{ attribute.attributeName }}="{{ attribute.attributeValue }}"
+    {% for meta in site.data.seo.metaData %}<meta {% for attribute in meta %}{{ attribute.attributeName }}="{{ attribute.attributeValue }}"{% endfor %} />
     {% endfor %}
-    />
+  {% for link in site.data.seo.links %}<link {% for attribute in link %}{{ attribute.attributeName }}="{{ attribute.attributeValue }}"{% endfor %} />
   {% endfor %}
-  {% for link in site.data.seo.links %}
-  <link 
-  {% for attribute in link %}
-    {{ attribute.attributeName }}="{{ attribute.attributeValue }}"
-  {% endfor %}
-  />
-    {% endfor %}
 
     <link href="https://fonts.googleapis.com/css2?family=KoHo&family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">

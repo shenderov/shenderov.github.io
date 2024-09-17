@@ -1,7 +1,7 @@
 # Site settings
 title: Konstantin Shenderov - Test Automation & Full Stack Developer
 email: shenderov.k@gmail.com
-description: >- 
+description: >-
   Konstantin Shenderov is a Test Automation Engineer and Full Stack Developer with over 12 years of experience in software testing, QA automation, and web development.
 baseurl: "" 
 url: "https://shenderov.me"
@@ -13,15 +13,18 @@ includes_dir: _includes
 sass:
   sass_dir: _sass
 
+uglifier: false
+
 minify_html:
   enable: false
 
-environments:
-  production:
-    minify_html:
-      enable: true
+assets:
+  compress:
+    js: false
+    css: false
+    extensions: ['.css', '.js']
+  autoprefixer: false
 
 # Plugins
 plugins:
-  - jekyll-minifier
-  - jekyll-sitemap
+  - jekyll-assets
