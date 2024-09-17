@@ -2,19 +2,15 @@ name: Deploy to GitHub Pages
 
 on:
   pull_request:
-    branches:
-      - main
     types:
+      - opened
+      - synchronize
       - closed
 
   workflow_dispatch:
     inputs:
       version_override:
         description: 'Override version'
-        required: true
-      branch:
-        description: 'Branch to deploy from'
-        default: 'main'
         required: true
 
 permissions:
@@ -27,7 +23,6 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Step 1: Build and determine version
   build_and_version:
     runs-on: ubuntu-latest
 
@@ -35,9 +30,9 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.inputs.branch || 'main' }}
+          ref: ${{ github.head_ref || github.ref }}
 
-      - name: Setup Ruby
+      - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3.5'
@@ -46,66 +41,73 @@ jobs:
       - name: Install dependencies
         run: bundle install
 
-      - name: Get current version
-        id: current_version
+      - name: Load current version and branch from version.json
+        id: load_version
         run: |
           if [ -f _data/version.json ]; then
-            cat _data/version.json | jq -r '.version' > current_version.txt
-          else
-            echo "0.0.0" > current_version.txt
-          fi
-          echo "::set-output name=version::$(cat current_version.txt)"
-
-      - name: Determine new version
-        id: semver
-        run: |
-          branch_name=${{ github.head_ref || github.event.inputs.branch }}
-          current_version=$(cat current_version.txt)
-
-          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
-            new_version="${{ github.event.inputs.version_override }}"
-          else
-            major=$(echo $current_version | cut -d. -f1)
-            minor=$(echo $current_version | cut -d. -f2)
-            patch=$(echo $current_version | cut -d. -f3)
-
-            if [[ "$branch_name" == major/* || "$branch_name" == version/* ]]; then
-              major=$((major + 1))
-              minor=0
-              patch=0
-            elif [[ "$branch_name" == feature/* || "$branch_name" == minor/* ]]; then
-              minor=$((minor + 1))
-              patch=0
-            elif [[ "$branch_name" == update/* || "$branch_name" == fix/* ]]; then
-              patch=$((patch + 1))
+            echo "Contents of version.json:"
+            cat _data/version.json
+            
+            # Use jq to extract values
+            branch=$(jq -r '.branch' _data/version.json)
+            version=$(jq -r '.version' _data/version.json)
+            
+            # Handle empty or invalid jq results
+            if [[ -z "$branch" || "$branch" == "null" ]]; then
+              branch=""
             fi
+            
+            if [[ -z "$version" || "$version" == "null" ]]; then
+              version="0.0.0"
+            fi
+          else
+            echo "version.json not found, setting defaults"
+            branch=""
+            version="0.0.0"
+          fi
+          echo "::set-output name=current_branch::$branch"
+          echo "::set-output name=current_version::$version"
 
-            new_version="$major.$minor.$patch"
+      - name: Bump Version
+        id: bump_version
+        if: ${{ github.event.action == 'opened' }} && steps.load_version.outputs.current_branch != github.head_ref
+        run: |
+          branch_name=${{ github.head_ref }}
+          current_version="${{ steps.load_version.outputs.current_version }}"
+          major=$(echo $current_version | cut -d. -f1)
+          minor=$(echo $current_version | cut -d. -f2)
+          patch=$(echo $current_version | cut -d. -f3)
+
+          if [[ "$branch_name" == major/* || "$branch_name" == version/* ]]; then
+            major=$((major + 1))
+            minor=0
+            patch=0
+          elif [[ "$branch_name" == feature/* || "$branch_name" == minor/* ]]; then
+            minor=$((minor + 1))
+            patch=0
+          elif [[ "$branch_name" == update/* || "$branch_name" == fix/* ]]; then
+            patch=$((patch + 1))
           fi
 
-          echo "New version: $new_version"
-          echo "::set-output name=version::$new_version"
+          new_version="$major.$minor.$patch"
+          echo "Bumped version: $new_version"
+          echo "::set-output name=new_version::$new_version"
 
       - name: Update version.json
+        if: steps.bump_version.outputs.new_version != ''
         run: |
+          branch_name=${{ github.head_ref }}
           build_number=$GITHUB_RUN_NUMBER
           timestamp=$(date +%Y%m%d)
 
-          jq -n --arg version "$new_version" --arg build "$build_number" --arg timestamp "$timestamp" \
-            '{version: $version, build: $build, timestamp: $timestamp}' > _data/version.json
+          jq -n --arg version "${{ steps.bump_version.outputs.new_version }}" --arg branch "$branch_name" \
+            '{version: $version, branch: $branch}' > _data/version.json
 
-      - name: Commit version changes
-        run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add _data/version.json
-          git commit -m "Bump version to ${{ steps.semver.outputs.version }} [skip ci]"
-          git push origin main
-
-      - name: Create and push Git tag
-        run: |
-          git tag "v${{ steps.semver.outputs.version }}"
-          git push origin "v${{ steps.semver.outputs.version }}"
+          git commit -m "Bump version to ${{ steps.bump_version.outputs.new_version }} [skip ci]"
+          git push origin ${{ github.head_ref }}
 
       - name: Build the Jekyll site
         env:
@@ -117,7 +119,6 @@ jobs:
         with:
           path: ./_site
 
-  # Step 2: Deployment to GitHub Pages
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_version
@@ -125,3 +126,25 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+
+      - name: Update version.json with build and timestamp after success
+        if: github.event.pull_request.merged == true
+        run: |
+          build_number=$GITHUB_RUN_NUMBER
+          timestamp=$(date +%Y%m%d)
+          current_version=$(cat _data/version.json | jq -r '.version')
+
+          jq '.build = $build | .timestamp = $timestamp' --arg build "$build_number" --arg timestamp "$timestamp" _data/version.json > _data/version.json
+
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add _data/version.json
+          git commit -m "Update build number and timestamp"
+          git push origin main
+
+      - name: Create and push Git tag
+        if: github.event.pull_request.merged == true
+        run: |
+          current_version=$(cat _data/version.json | jq -r '.version')
+          git tag "v$current_version"
+          git push origin "v$current_version"

@@ -1,5 +1,4 @@
 {
-  "version": "",
-  "build": "4",
-  "timestamp": "20240916"
+  "version": "1.2.0",
+  "branch": "feature/migrate-to-jekyll"
 }
