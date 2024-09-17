@@ -59,13 +59,13 @@ jobs:
             echo "version.json not found, setting defaults"
             version="0.0.0"
           fi
-          echo "::set-output name=current_version::$version"
-
+          echo "current_version=$version" >> $GITHUB_ENV
+          
       - name: Bump Version
         id: bump_version
         if: ${{ github.event_name != 'workflow_dispatch' }}
         run: |
-          current_version="${{ steps.load_version.outputs.current_version }}"
+          current_version="${{ env.current_version }}"
           major=$(echo $current_version | cut -d. -f1)
           minor=$(echo $current_version | cut -d. -f2)
           patch=$(echo $current_version | cut -d. -f3)
@@ -83,7 +83,7 @@ jobs:
 
           new_version="$major.$minor.$patch"
           echo "Bumped version: $new_version"
-          echo "::set-output name=new_version::$new_version"
+          echo "new_version=$new_version" >> $GITHUB_ENV
 
       - name: Update version.json
         run: |
@@ -91,7 +91,13 @@ jobs:
           build_number=$GITHUB_RUN_NUMBER
           timestamp=$(date +%Y%m%d)
 
-          jq -n --arg version "${{ steps.bump_version.outputs.new_version != '' && steps.bump_version.outputs.new_version || github.event.inputs.version_override }}" \
+          if [[ -n "${{ env.new_version }}" ]]; then
+            version="${{ env.new_version }}"
+          else
+            version="${{ github.event.inputs.version_override }}"
+          fi
+
+          jq -n --arg version "$version" \
                 --arg branch "$branch_name" \
                 --arg build "$build_number" \
                 --arg timestamp "$timestamp" \

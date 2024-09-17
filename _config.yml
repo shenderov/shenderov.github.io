@@ -19,7 +19,7 @@ minify_html:
 environments:
   production:
     minify_html:
-      enable: true
+      enable: false
 
 # Plugins
 plugins:
