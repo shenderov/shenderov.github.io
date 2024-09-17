@@ -16,9 +16,6 @@ sass:
 minify_html:
   enable: false
 
-uglifier:
-  harmony: true
-
 environments:
   production:
     minify_html:
@@ -28,3 +25,4 @@ environments:
 plugins:
   - jekyll-minifier
   - jekyll-sitemap
+  - jekyll-assets 
