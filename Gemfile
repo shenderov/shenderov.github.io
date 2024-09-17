@@ -8,6 +8,9 @@ group :jekyll_plugins do
   gem "jekyll-sitemap" # Generates sitemap.xml for SEO
   gem "jekyll-minifier" # Minifies HTML, CSS, and JS
   gem "jekyll-feed" # Generates RSS feed
+  gem 'logger'
+  gem 'csv'
+  gem 'base64'
 end
 
 # Windows and JRuby dependencies (if needed)

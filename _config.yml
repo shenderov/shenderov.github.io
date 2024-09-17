@@ -16,6 +16,9 @@ sass:
 minify_html:
   enable: false
 
+uglifier:
+  harmony: true
+
 environments:
   production:
     minify_html:
