@@ -112,6 +112,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./_site
+          name: github-pages
 
   deploy:
     runs-on: ubuntu-latest
