@@ -41,13 +41,27 @@ jobs:
       - name: Install dependencies
         run: bundle install
 
-      - name: Load current version and branch
+      - name: Load current version and branch from version.json
         id: load_version
         run: |
           if [ -f _data/version.json ]; then
-            branch=$(cat _data/version.json | jq -r '.branch')
-            version=$(cat _data/version.json | jq -r '.version')
+            echo "Contents of version.json:"
+            cat _data/version.json
+            
+            # Use jq to extract values
+            branch=$(jq -r '.branch' _data/version.json)
+            version=$(jq -r '.version' _data/version.json)
+            
+            # Handle empty or invalid jq results
+            if [[ -z "$branch" || "$branch" == "null" ]]; then
+              branch=""
+            fi
+            
+            if [[ -z "$version" || "$version" == "null" ]]; then
+              version="0.0.0"
+            fi
           else
+            echo "version.json not found, setting defaults"
             branch=""
             version="0.0.0"
           fi
