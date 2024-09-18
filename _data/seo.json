@@ -114,7 +114,7 @@
       },
       {
         "attributeName": "content", 
-        "attributeValue": "/assets/img/og-image.jpg"
+        "attributeValue": "https://shenderov.me/assets/img/og-image.jpeg"
         }
       ],
       [
@@ -164,7 +164,7 @@
       },
       {
         "attributeName": "content", 
-        "attributeValue": "/assets/img/og-image.jpg"
+        "attributeValue": "https://shenderov.me/assets/img/og-image.jpeg"
         }
       ],
       [
@@ -194,7 +194,7 @@
       },
       {
         "attributeName": "content", 
-        "attributeValue": "/assets/img/icons/ms-icon-144x144.png"
+        "attributeValue": "https://shenderov.me/assets/img/icons/ms-icon-144x144.png"
         }
       ],
       [
@@ -226,7 +226,7 @@
       },
       {
         "attributeName": "href", 
-        "attributeValue": "/assets/img/icons/manifest.json"
+        "attributeValue": "https://shenderov.me/assets/img/icons/manifest.json"
         }
       ],
       [
@@ -236,7 +236,7 @@
       },
       {
         "attributeName": "href", 
-        "attributeValue": "/assets/img/icons/apple-touch-icon.png"
+        "attributeValue": "https://shenderov.me/assets/img/icons/apple-touch-icon.png"
         }
       ],
       [
@@ -246,7 +246,7 @@
       },
       {
         "attributeName": "href", 
-        "attributeValue": "/assets/img/icons/favicon-32x32.png"
+        "attributeValue": "https://shenderov.me/assets/img/icons/favicon-32x32.png"
         },
         {
           "attributeName": "sizes", 
@@ -260,7 +260,7 @@
       },
       {
         "attributeName": "href", 
-        "attributeValue": "/assets/img/icons/favicon-16x16.png"
+        "attributeValue": "https://shenderov.me/assets/img/icons/favicon-16x16.png"
         },
         {
           "attributeName": "sizes", 
@@ -274,7 +274,7 @@
       },
       {
         "attributeName": "href", 
-        "attributeValue": "/assets/img/icons/favicon.ico"
+        "attributeValue": "https://shenderov.me/assets/img/icons/favicon.ico"
         },
         {
           "attributeName": "type", 
