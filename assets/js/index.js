@@ -40,7 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
   let formDirty = false;
 
   if (reCaptchaKey) {
-    reCaptchaElement.style.display = "block";
+    reCaptchaElement.classList.remove("hide");
+    reCaptchaElement.classList.add("show");
   }
 
   function validateForm() {

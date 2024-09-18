@@ -16,7 +16,7 @@
                       {% for skill in skill_chunk %}
                           <span>{{ skill.label }}</span>
                           <div class="progress">
-                            <div class="determinate" style="width: {{ skill.value }}%;"></div>
+                            <div class="determinate determinate-{{ skill.value}}"></div>
                           </div>
                       {% endfor %}
                     </div>
