@@ -91,10 +91,10 @@ jobs:
           branch_name=${{ github.head_ref || github.ref }}
           build_number=$GITHUB_RUN_NUMBER
           timestamp=$(date +%Y%m%d)
-      
+          
           # Check if new_version exists, otherwise use the version_override input
-          if [ -n "$NEW_VERSION" ]; then
-            version="$NEW_VERSION"
+          if [ -n "${{ env.new_version }}" ]; then
+            version="${{ env.new_version }}"
           else
             version="${{ github.event.inputs.version_override }}"
           fi
@@ -105,11 +105,11 @@ jobs:
                 --arg build "$build_number" \
                 --arg timestamp "$timestamp" \
                 '{version: $version, branch: $branch, build: $build, timestamp: $timestamp}' > _data/version.json
+      
           if [ -f _data/version.json ]; then
             echo "Contents of new version.json:"
             cat _data/version.json
-        env:
-          NEW_VERSION: ${{ env.new_version }}
+          fi
 
       - name: Build the Jekyll site
         env:
