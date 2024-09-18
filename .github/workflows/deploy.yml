@@ -36,7 +36,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3.5'
-          bundler-cache: false
+          bundler-cache: true
 
       - name: Install dependencies
         run: bundle install
@@ -139,8 +139,8 @@ jobs:
 
       - name: Debug Deploy
         run: |
-          ls -lah
-          git status
+          pwd
+          ls -lah /
 
       - name: Update version.json with build and timestamp after success
         if: github.event.pull_request.merged == true
