@@ -137,11 +137,10 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Checkout main branch
-        if: github.event.pull_request.merged == true
-        uses: actions/checkout@v2
-        with:
-          ref: main
+      - name: Debug Deploy
+        run: |
+          ls -lah
+          git status
 
       - name: Update version.json with build and timestamp after success
         if: github.event.pull_request.merged == true
