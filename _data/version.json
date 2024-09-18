@@ -1,4 +1,6 @@
 {
-  "version": "1.2.0",
-  "branch": ""
+  "version": "1.2.3",
+  "branch": "main",
+  "build": "10",
+  "timestamp": "20240918"
 }

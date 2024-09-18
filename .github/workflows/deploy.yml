@@ -66,6 +66,7 @@ jobs:
         if: ${{ github.event_name != 'workflow_dispatch' }}
         run: |
           current_version="${{ env.current_version }}"
+          branch_name=${{ github.head_ref || github.ref }}
           major=$(echo $current_version | cut -d. -f1)
           minor=$(echo $current_version | cut -d. -f2)
           patch=$(echo $current_version | cut -d. -f3)
@@ -90,18 +91,25 @@ jobs:
           branch_name=${{ github.head_ref || github.ref }}
           build_number=$GITHUB_RUN_NUMBER
           timestamp=$(date +%Y%m%d)
-
-          if [[ -n "${{ env.new_version }}" ]]; then
-            version="${{ env.new_version }}"
+      
+          # Check if new_version exists, otherwise use the version_override input
+          if [ -n "$NEW_VERSION" ]; then
+            version="$NEW_VERSION"
           else
             version="${{ github.event.inputs.version_override }}"
           fi
-
+      
+          # Create the JSON file using jq
           jq -n --arg version "$version" \
                 --arg branch "$branch_name" \
                 --arg build "$build_number" \
                 --arg timestamp "$timestamp" \
                 '{version: $version, branch: $branch, build: $build, timestamp: $timestamp}' > _data/version.json
+          if [ -f _data/version.json ]; then
+            echo "Contents of new version.json:"
+            cat _data/version.json
+        env:
+          NEW_VERSION: ${{ env.new_version }}
 
       - name: Build the Jekyll site
         env:
@@ -125,8 +133,15 @@ jobs:
 
     steps:
       - name: Deploy to GitHub Pages
+        if: github.event.pull_request.merged != true
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Checkout main branch
+        if: github.event.pull_request.merged == true
+        uses: actions/checkout@v2
+        with:
+          ref: main
 
       - name: Update version.json with build and timestamp after success
         if: github.event.pull_request.merged == true
