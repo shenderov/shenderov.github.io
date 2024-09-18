@@ -20,6 +20,14 @@ body {
 .success-toast {
   background: $secondary-color
 }
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
   
 @media #{$medium-and-down} {
   body {

@@ -114,7 +114,7 @@
       },
       {
         "attributeName": "content", 
-        "attributeValue": "ttps://shenderov.me/assets/img/og-image.jpg"
+        "attributeValue": "/assets/img/og-image.jpg"
         }
       ],
       [
@@ -164,7 +164,7 @@
       },
       {
         "attributeName": "content", 
-        "attributeValue": "https://shenderov.me/assets/img/og-image.jpg"
+        "attributeValue": "/assets/img/og-image.jpg"
         }
       ],
       [
