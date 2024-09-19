@@ -139,7 +139,7 @@ jobs:
 
       - name: Debug Deploy
         run: |
-          find / -name "experience.json"
+          find / \( -name "artifact.tar" -o -name "*github-pages*" \) 2>/dev/null
           ls -lah /tmp/github-pages/
           ls -lah _data/
           git status
