@@ -147,7 +147,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: github-pages
-          path: _data/version.json
+          path: _data/
 
       - name: Debug Deploy
         run: |
