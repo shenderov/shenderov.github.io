@@ -148,6 +148,9 @@ jobs:
         with:
           ref: main
 
+      - name: Delete existing version.json
+        run: rm -f _data/version.json
+
       - name: Download version.json artifact
         uses: actions/download-artifact@v4
         with:
