@@ -146,12 +146,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: github-pages
-          path: _data/
+          path: /tmp/
 
       - name: Debug Deploy
         run: |
           pwd
-          ls -lah /
+          ls -lah /tmp/
           ls -lah _data/
           git status
 
