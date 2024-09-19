@@ -14,7 +14,7 @@ on:
         required: true
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -131,7 +131,7 @@ jobs:
 
     permissions:
       pages: write
-      id-token: write
+      contents: write
 
     environment:
       name: github-pages
