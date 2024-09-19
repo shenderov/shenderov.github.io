@@ -137,10 +137,24 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
+      - name: Checkout the repository
+        if: github.event.pull_request.merged == true
+        uses: actions/checkout@v2
+        with:
+          ref: main
+
+      - name: Download version.json artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: github-pages
+          path: _data/version.json
+
       - name: Debug Deploy
         run: |
           pwd
           ls -lah /
+          ls -lah _data
+          git status
 
       - name: Update version.json with build and timestamp after success
         if: github.event.pull_request.merged == true
