@@ -137,13 +137,6 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Debug Deploy
-        run: |
-          find / \( -name "artifact.tar" -o -name "*github-pages*" \) 2>/dev/null
-          ls -lah /tmp/github-pages/
-          ls -lah _data/
-          git status
-
       - name: Checkout the repository
         uses: actions/checkout@v4
         with:
@@ -154,6 +147,12 @@ jobs:
         with:
           name: github-pages
           path: /tmp/github-pages/
+
+      - name: Copy version file
+        run: |
+          ls -lah /tmp/github-pages/
+          tar -xvf /tmp/github-pages/artifact.tar -C .
+          ls -lah /tmp/github-pages/
 
       - name: Update version.json with build and timestamp after success
         if: github.event.pull_request.merged == true
