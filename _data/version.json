@@ -1,6 +1,6 @@
 {
-  "version": "1.2.4",
-  "branch": "fix/permissions-fix",
-  "build": "55",
+  "version": "1.2.5",
+  "branch": "refs/heads/main",
+  "build": "56",
   "timestamp": "20240919"
 }
