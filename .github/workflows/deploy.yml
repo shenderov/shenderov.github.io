@@ -28,7 +28,7 @@ jobs:
 
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref || github.ref }}
 
@@ -137,8 +137,15 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
+      - name: Debug Deploy
+        run: |
+          find / -name "experience.json"
+          ls -lah /tmp/github-pages/
+          ls -lah _data/
+          git status
+
       - name: Checkout the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: main
 
@@ -146,14 +153,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: github-pages
-          path: /tmp/
-
-      - name: Debug Deploy
-        run: |
-          pwd
-          ls -lah /tmp/
-          ls -lah _data/
-          git status
+          path: /tmp/github-pages/
 
       - name: Update version.json with build and timestamp after success
         if: github.event.pull_request.merged == true
