@@ -144,35 +144,45 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: Checkout the repository
+        if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
         uses: actions/checkout@v4
         with:
           ref: main
 
       - name: Delete existing version.json
+        if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
         run: rm -f _data/version.json
 
       - name: Download version.json artifact
+        if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
         uses: actions/download-artifact@v4
         with:
           name: version
           path: _data/
 
-      - name: Copy version file
+      - name: Push version.json to Github and create a Git tag
+        if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
         run: |
-          cat _data/version.json
+          if [ -f _data/version.json ]; then
+            version=$(jq -r '.version' _data/version.json)
+          else
+            echo "Error: _data/version.json not found."
+            exit 1
+          fi
 
-      - name: Update version.json with build and timestamp after success
-        if: github.event.pull_request.merged == true
-        run: |
+          if [ -z "$version" ]; then
+            echo "Error: Version is empty or invalid."
+            exit 1
+          fi
+      
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+      
+          # Commit version.json update
           git add _data/version.json
-          git commit -m "Update build number and timestamp"
+          git commit -m "Update version.json to v${version}"
           git push origin main
-
-      - name: Create and push Git tag
-        if: github.event.pull_request.merged == true
-        run: |
-          current_version=$(cat _data/version.json | jq -r '.version')
-          git tag "v$current_version"
-          git push origin "v$current_version"
+      
+          # Create and push the Git tag
+          git tag "v$version"
+          git push origin "v$version"
