@@ -138,7 +138,6 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: Checkout the repository
-        if: github.event.pull_request.merged == true
         uses: actions/checkout@v2
         with:
           ref: main
@@ -153,7 +152,7 @@ jobs:
         run: |
           pwd
           ls -lah /
-          ls -lah _data
+          ls -lah _data/
           git status
 
       - name: Update version.json with build and timestamp after success
