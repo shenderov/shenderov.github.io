@@ -4,86 +4,194 @@
     {
       "position": 1,
       "iconClass": null,
-      "label": "Java",
-      "value": 95
+      "label": "JavaScript",
+      "value": 90
     },
     {
       "position": 2,
       "iconClass": null,
-      "label": "Spring Framework",
+      "label": "TypeScript",
       "value": 90
     },
     {
       "position": 3,
       "iconClass": null,
-      "label": "Selenium Web Driver",
+      "label": "Java",
       "value": 95
     },
     {
       "position": 4,
       "iconClass": null,
       "label": "Groovy",
-      "value": 80
+      "value": 85
     },
     {
       "position": 5,
       "iconClass": null,
-      "label": "CI/CD Tools",
-      "value": 85
+      "label": "Bash Scripting",
+      "value": 80
     },
     {
       "position": 6,
       "iconClass": null,
-      "label": "Databases",
-      "value": 80
+      "label": "Node.js",
+      "value": 75
     },
     {
       "position": 7,
       "iconClass": null,
-      "label": "Clouding and virtualization",
-      "value": 70
+      "label": "Playwright",
+      "value": 95
     },
     {
       "position": 8,
       "iconClass": null,
-      "label": "Software Testing Methodologies",
-      "value": 100
+      "label": "WebdriverIO",
+      "value": 80
     },
     {
       "position": 9,
       "iconClass": null,
-      "label": "JUnit, TestNG, Spock",
-      "value": 95
+      "label": "Selenium WebDriver",
+      "value": 100
     },
     {
       "position": 10,
       "iconClass": null,
-      "label": "SoapUI",
+      "label": "Postman",
       "value": 90
     },
     {
       "position": 11,
       "iconClass": null,
-      "label": "Bash Scripting",
-      "value": 70
+      "label": "RestAssured",
+      "value": 85
     },
     {
       "position": 12,
       "iconClass": null,
-      "label": "JavaScript / AngularJS",
-      "value": 75
+      "label": "Spock Framework",
+      "value": 80
     },
     {
       "position": 13,
       "iconClass": null,
-      "label": "HTML5 / CSS3",
-      "value": 75
+      "label": "Spring Framework",
+      "value": 90
     },
     {
       "position": 14,
       "iconClass": null,
-      "label": "Spring Boot",
+      "label": "JUnit/TestNG",
+      "value": 95
+    },
+    {
+      "position": 15,
+      "iconClass": null,
+      "label": "GitHub Actions",
+      "value": 65
+    },
+    {
+      "position": 16,
+      "iconClass": null,
+      "label": "Jenkins",
       "value": 80
+    },
+    {
+      "position": 17,
+      "iconClass": null,
+      "label": "Docker",
+      "value": 75
+    },
+    {
+      "position": 18,
+      "iconClass": null,
+      "label": "AWS (Amazon Web Services)",
+      "value": 70
+    },
+    {
+      "position": 19,
+      "iconClass": null,
+      "label": "MySQL/PostgreSQL",
+      "value": 80
+    },
+    {
+      "position": 20,
+      "iconClass": null,
+      "label": "MongoDB",
+      "value": 65
+    },
+    {
+      "position": 21,
+      "iconClass": null,
+      "label": "Software Testing Methodologies",
+      "value": 100
+    },
+    {
+      "position": 22,
+      "iconClass": null,
+      "label": "Test Automation Framework Design",
+      "value": 100
+    },
+    {
+      "position": 23,
+      "iconClass": null,
+      "label": "End-to-End Testing (E2E)",
+      "value": 100
+    },
+    {
+      "position": 24,
+      "iconClass": null,
+      "label": "API Testing",
+      "value": 95
+    },
+    {
+      "position": 25,
+      "iconClass": null,
+      "label": "Containerization and Virtualization",
+      "value": 75
+    },
+    {
+      "position": 26,
+      "iconClass": null,
+      "label": "Load and Performance Testing",
+      "value": 70
+    },
+    {
+      "position": 27,
+      "iconClass": null,
+      "label": "Version Control (Git)",
+      "value": 80
+    },
+    {
+      "position": 28,
+      "iconClass": null,
+      "label": "Data Management and Testing",
+      "value": 85
+    },
+    {
+      "position": 29,
+      "iconClass": null,
+      "label": "Cross-Browser Testing",
+      "value": 80
+    },
+    {
+      "position": 30,
+      "iconClass": null,
+      "label": "Tooling Adaptability",
+      "value": 100
+    },
+    {
+      "position": 31,
+      "iconClass": null,
+      "label": "Agile Methodology",
+      "value": 75
+    },
+    {
+      "position": 32,
+      "iconClass": null,
+      "label": "Mentorship and Leadership",
+      "value": 85
     }
   ]
 }
