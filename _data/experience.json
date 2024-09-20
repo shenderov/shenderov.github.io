@@ -8,7 +8,7 @@
       "positionName": "Senior QA Automation Developer",
       "organisation": "StackAdapt",
       "location": "Toronto, Canada. Remote",
-      "description": ""
+      "description": "As a passionate Senior QA Automation Developer at StackAdapt, I am part of a highly impactful team focused on ensuring confident platform releases by delivering multiple testing levels integrated into the company’s CI/CD pipeline. As one of the founding members of the test automation team, I have the unique opportunity to contribute from the ground up, shaping automation strategies that drive reliable and scalable test cases.<br>Key Responsibilities:<br>Develop and maintain tools for the company’s end-to-end (E2E) test framework using Playwright and TypeScript, expanding E2E test coverage for feature teams in areas such as UI functional, sanity, and regression testing.<br>Collaborate with relevant stakeholders to deploy and execute tests within CI/CD environments, ensuring comprehensive test coverage and fast feedback loops.<br>Accelerate defect detection and prevention by continuously improving automation coverage and efficiency.<br>Participate in technical planning, code reviews, and architectural discussions to ensure product quality from the early stages of development.<br>Provide timely and actionable feedback on test results to stakeholders, enabling informed decision-making for product releases.<br>"
     },
     {
       "startDate": "2021-03-15T05:00:00.000+00:00",
@@ -17,7 +17,7 @@
       "positionName": "Software Development Engineer in Test (SDET)",
       "organisation": "Postman",
       "location": "Remote",
-      "description": "Contributed to the company’s test framework adding new features and performing routine maintenance. Ensured stability, reliability, and performance of test execution. Created and maintained tests. Engaged developers to contribute to the testing effort. Lead several initiatives and researches to introduce test framework features requested by engineering teams"
+      "description": "Contributed to enhancing Postman’s test framework by developing new features, performing routine maintenance, and ensuring the stability, reliability, and performance of test executions. <br>Created and maintained a wide range of automated tests while collaborating closely with developers to drive quality-focused development. <br>Led multiple initiatives and research efforts to introduce new test framework features based on the evolving needs of engineering teams, significantly improving testing efficiency and coverage."
     },
     {
       "startDate": "2020-01-29T21:00:00.000+0000",
@@ -26,7 +26,7 @@
       "positionName": "QA Automation Engineer",
       "organisation": "Farmers Edge",
       "location": "Winnipeg, Canada",
-      "description": "Close work with QA Manager and the product team to create a testing strategy. Determination of the company’s test automation needs, evaluating and selecting test automation tools and libraries. Test automation framework architecture and development from scratch according to determined testing strategy. Close cooperation with developers and DevOps team for test automation project integration into the company’s CI/CD environment. Maintaining a repository of created test scripts and tools."
+      "description": "Collaborated closely with the QA Manager and product team to define and implement a comprehensive testing strategy. Identified the company’s test automation needs, evaluated, and selected appropriate tools and libraries. Architected and developed a test automation framework from scratch in alignment with the testing strategy. Worked with developers and the DevOps team to seamlessly integrate the automation framework into the CI/CD pipeline. Maintained a repository of automated test scripts and tools while creating and managing test plans for various projects. Mentored team members to foster a culture of continuous learning and provided regular status updates and feedback to stakeholders."
     },
     {
       "startDate": "2017-10-30T21:00:00.000+0000",
@@ -35,7 +35,7 @@
       "positionName": "QA Automation Engineer",
       "organisation": "JFrog",
       "location": "Netanya, Israel",
-      "description": "As part of the Artifactory team, I have been responsible for the quality and performance of the product, as well as, creating and generating suggestions for enhanced customer experience. My duties include developing and implementing automated test practices using a wide range of tools (Groovy, Geb, and Spock) that focus on improving efficiency."
+      "description": "Oversaw the quality and performance of the Artifactory product, while recommending enhancements to improve the customer experience. Analyzed, designed, developed, and maintained complex automated tests and automation architecture for multiple products, aligning with current and future market needs. Defined automation test objectives, strategies, processes, standards, and metrics, and collaborated with other departments to ensure seamless integration of automation into project tasks. Implemented automated test practices using tools such as Groovy, Geb, and Spock, with a focus on improving efficiency. Developed data loading and generation solutions to support load and performance testing."
     },
     {
       "startDate": "2012-03-30T21:00:00.000+0000",
@@ -44,7 +44,7 @@
       "positionName": "QC/QA Engineer",
       "organisation": "Avid (former Orad Hi-Tech)",
       "location": "Kfar Saba, Israel",
-      "description": "In my role as a QC Engineer, I performed integration testing, troubleshooting, and quality control of real-time 3D graphics and video systems for world-leading broadcasters while in close cooperation with the research and development department. In my role as a QA engineer at Orad, I tested new versions of software, firmware, and hardware as well as maintained the records and database of systems tested in a central company repository."
+      "description": "Executed integration testing, troubleshooting, and quality control of real-time 3D graphics and video systems for world-leading broadcasters, working closely with the research and development department. Tested new versions of software, firmware, and hardware, maintaining a comprehensive database of the systems tested in a central company repository. Contributed to automation project planning, including defining scope, schedule, and architecture within the automation framework. Tracked and analyzed test results, implemented corrective actions, and reported automation summaries to update project statuses."
     },
     {
       "startDate": "2015-04-30T21:00:00.000+0000",
@@ -53,7 +53,7 @@
       "positionName": "QA Automation Engineer",
       "organisation": "Viaccess-Orca",
       "location": "Raanana, Israel",
-      "description": "As part of the Viaccess-Orca team, my responsibilities included developing and implementing automated test practices for both web applications and back-end API using, primarily, Selenium Web Driver and SoapUI. In addition to this, my job was to design and create automated configuration scripts and tools using the programming languages of Java and Groovy. Beyond this, I developed and implemented data loading and generation solutions using load and performance testing technologies. I also worked hand-in-hand with QA managers and colleagues to define processes and strategies associated with automation and participated in product design reviews in order to provide input on functional requirements, product designs, schedules, and potential problems. Finally, my role also included researching and testing new test tools, practices, and technologies in order to improve testing processes and decrease test time."
+      "description": "Developed and implemented automated test practices for both web applications and back-end APIs, primarily using Selenium Web Driver and SoapUI. Designed and created automated configuration scripts and tools with Java and Groovy. Developed data loading and generation solutions for load and performance testing. Worked closely with the QA Manager and team to define automation processes and strategies, and actively participated in product design reviews to provide input on functional requirements, product designs, schedules, and potential issues. Conducted research on new testing tools, practices, and technologies to enhance efficiency and reduce testing time."
     }
   ]
 }
