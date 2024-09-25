@@ -1,0 +1,7 @@
+---
+permalink: /404.html
+layout: secondary-page
+page_title: "404 - Konstantin Shenderov"
+section_title: "404 Page not found :("
+---
+{% include 404.html %}

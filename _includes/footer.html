@@ -1,7 +1,35 @@
 <footer class="page-footer wow fadeIn" data-wow-delay="0.2s">
+    <div class="footer-tall">
+        <div class="row footer-tall-row">
+          <div class="col l8 s12">
+            <p>“Quality in a service or product is not what you put into it. It is what the customer gets out of it.” – <strong>Peter Drucker.</strong></p>
+          </div>
+          <div class="col l2 offset-l2 s12">
+            <ul class="footer-menu">
+              <li><a href="/#">Home</a></li>
+              <li><a href="/#contact">Contact</a></li>
+              <li><a href="/privacy-policy">Privacy Policy</a></li>
+              <li><a href="/terms-of-use">Terms of Use</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="container">
+            <div class="row center">
+                {% for link in site.data.footer.mediaLinks | sort: "position" %}
+                <span class="icon-wrapper">
+                    <a href="{{link.value}}" target="_blank" title="{{link.label}}">
+                        <i class="{{link.iconClass}}"></i>
+                    </a>
+                </span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
     <div class="footer-copyright">
         <div class="container">
-            <span class="footer-copyright-text" data-start-year="{{ site.data.seo.projectStartYear }}">{{ site.data.seo.footerCopyright }}</span>
+            <span class="footer-copyright-text" data-start-year="{{ site.data.footer.projectStartYear }}">{{ site.data.footer.footerCopyright }}</span>
             <span class="footer-version" title="v{{ site.data.version.version }}-{{ site.data.version.timestamp }}-{{ site.data.version.build }}">(v{{ site.data.version.version }})</span>
         </div>
     </div>

@@ -1,0 +1,30 @@
+{
+  "footerCopyright": "© 2019 Konstantin Shenderov. All Rights Reserved.",
+  "projectStartYear": "2019",
+  "mediaLinks": [
+    {
+      "position": 1,
+      "iconClass": "fa-brands fa-linkedin",
+      "value": "https://www.linkedin.com/in/shenderov",
+      "label": "LinkedIn"
+    },
+    {
+      "position": 2,
+      "iconClass": "fa-brands fa-square-x-twitter",
+      "value": "https://x.com/KShenderov",
+      "label": "X"
+    },
+    {
+      "position": 3,
+      "iconClass": "fa-brands fa-square-facebook",
+      "value": "https://www.facebook.com/konstantin.shenderov",
+      "label": "Facebook"
+    },
+    {
+      "position": 4,
+      "iconClass": "fa-brands fa-telegram",
+      "value": "https://t.me/shenderov_k",
+      "label": "Telegram"
+    }
+  ]
+}

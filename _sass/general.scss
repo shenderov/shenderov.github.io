@@ -17,6 +17,10 @@ body {
 .error-toast {
   background: $error-color
 }
+.warning-toast {
+  background: $warning-color;
+  color: $primary-text;
+}
 .success-toast {
   background: $secondary-color
 }
@@ -27,6 +31,45 @@ body {
 
 .hide {
   display: none;
+}
+
+/* Modal styles */
+.modal.policies {
+  width: 80% !important;
+  height: 80% !important;
+  padding: 20px;
+}
+
+/* Privacy Policy and Terms of Use Styles */
+.policies {
+  color: inherit;
+}
+
+.policies h3 {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: inherit;
+  margin-top: 20px;
+}
+
+.policies ul {
+  font-size: 1em;
+  color: inherit;
+}
+
+.policies li {
+  list-style-position: outside;
+  list-style-type: disc !important;
+  margin-left: 20px;
+}
+
+.policies p {
+  font-size: 1em;
+  margin: 0;
+}
+
+.policies strong {
+  font-weight: bold;
 }
   
 @media #{$medium-and-down} {
