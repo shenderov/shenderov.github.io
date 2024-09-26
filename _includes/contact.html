@@ -27,6 +27,12 @@
                             <textarea id="message" name="message" class="materialize-textarea name-textarea validate" required></textarea>
                             <label for="message">{{ include.data.formLabels.message.value }}</label>
                         </div>
+                        <div class="col s12">
+                            <label for="consent">
+                                <input id="consent" name="consent" type="checkbox" class="validate" required />
+                                <span>By submitting this form, I agree to the <a class="modal-trigger" href="#privacy-policy">Privacy Policy</a> and <a class="modal-trigger" href="#terms-of-use">Terms of Use</a>.</span>
+                              </label>
+                        </div>
                     </div>
                     <div class="divider"></div>
                     <div class="row">
