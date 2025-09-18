@@ -83,4 +83,9 @@ Contributions, suggestions, and bug reports are welcome!
 
 ## 📝 License
 
-This project is licensed under the [MIT License](LICENSE).
+This project’s source code is licensed under the [MIT License](LICENSE).  
+
+All original content on this site — including photos, biography, project descriptions, blog posts, and other written materials — is copyright © Konstantin Shenderov.  
+Such content is not covered by the MIT License and may not be copied, reused, or redistributed without explicit permission from the author.  
+
+For details, see the [NOTICE](NOTICE.md) file.
